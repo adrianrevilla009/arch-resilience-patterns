@@ -1,0 +1,10 @@
+services:
+  backend:
+    image: python:3.12.4-alpine
+    command: ["python", "-m", "http.server", "8080"]
+  toxiproxy:
+    image: ghcr.io/shopify/toxiproxy:2.9.0
+    depends_on: [backend]
+    ports:
+      - "8474:8474"   # Toxiproxy admin API
+      - "18080:18080" # proxied backend

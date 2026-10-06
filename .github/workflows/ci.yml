@@ -1,0 +1,10 @@
+name: ci
+on: [push, pull_request]
+permissions: { contents: read }
+jobs:
+  secrets:
+    uses: adrianrevilla009/lab-workflows/.github/workflows/gitleaks.yml@main
+  readme:
+    uses: adrianrevilla009/lab-workflows/.github/workflows/readme-check.yml@main
+  java:
+    uses: adrianrevilla009/lab-workflows/.github/workflows/java-maven.yml@main
